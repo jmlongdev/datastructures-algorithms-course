@@ -102,4 +102,20 @@ const logAllPairs = (arr) => {
   }
 };
 
-logAllPairs(boxes);
+// logAllPairs(boxes);
+
+const printAllNumbersThenAllPairSums = (numbers) => {
+  console.log("these are numbers: ");
+  numbers.forEach((number) => {
+    console.log(number);
+  });
+
+  console.log("and these are their sums:");
+  numbers.forEach((firstNumber) => {
+    numbers.forEach((secondNumber) => {
+      console.log(firstNumber + secondNumber);
+    });
+  });
+};
+
+printAllNumbersThenAllPairSums(boxes);
