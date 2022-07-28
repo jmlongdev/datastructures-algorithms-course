@@ -26,7 +26,7 @@ const findNemo = (arr1, arr2) => {
 // findNemo(everyone);
 // findNemo(large);
 
-const boxes = [0, 1, 2, 3, 4, 5];
+// const boxes = [0, 1, 2, 3, 4, 5];
 
 const logFirstTwoBoxes = (arr) => {
   console.log(arr[0]);
@@ -69,5 +69,37 @@ function anotherFunChallenge(input) {
   }
   let whoAmI = "I don't know"; // O(1)
 }
-// O(4 + 7n)
+// O(4 + 7n) still turns into O(n)
 // console.log(anotherFunChallenge(10));
+
+const printFirstitemThenFirstHalfThenSayHi100Times = (items) => {
+  console.log(` first item ${items[0]}`);
+
+  let middleIndex = Math.floor(items.length / 2);
+  let index = 0;
+
+  while (index < middleIndex) {
+    console.log(items[index]);
+    index++;
+  }
+
+  for (let i = 0; i < 100; i++) {
+    console.log("Hi");
+  }
+};
+
+// printFirstitemThenFirstHalfThenSayHi100Times([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+// Log all pairs of an array
+
+const boxes = [1, 2, 3, 4, 5];
+
+const logAllPairs = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      console.log(arr[i], arr[j]);
+    }
+  }
+};
+
+logAllPairs(boxes);
