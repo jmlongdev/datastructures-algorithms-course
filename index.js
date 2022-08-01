@@ -40,7 +40,7 @@ const foundNemo = (arr) => {
     }
   });
 };
-foundNemo(everyone);
+// foundNemo(everyone);
 
 // findNemo(nemo); // 0(n) - Linear Time
 // findNemo(everyone);
@@ -259,7 +259,96 @@ const containsCommonItem1 = (arr1, arr2) => {
   return false;
 }; // O(a+b)
 
-console.log(containsCommonItem1(arr1, arr2));
+// console.log(containsCommonItem1(arr1, arr2));
 
 ///// ========== SECTION 5 ======== //////
 ///// === Data Structures & Algorithms === ///
+
+///// ========== SECTION 6 ======== //////
+///// =========== Arrays =========//////
+
+const strings = ["a", "b", "c", "d"];
+
+// push
+strings.push("e"); // O(1)
+
+// pop
+strings.pop(); // O(1)
+
+// unshift
+strings.unshift("x"); //O(n)
+
+// splice
+strings.splice(2, 0, "alien"); //O(n)
+
+// console.log(strings);
+
+// IMPLEMENTING ARRAYS
+
+class MyArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
+  }
+
+  get(index) {
+    return this.data[index];
+  }
+
+  push(item) {
+    this.data[this.length] = item;
+    this.length++;
+    return this.length;
+  }
+
+  pop() {
+    const lastItem = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return lastItem;
+  }
+
+  delete(index) {
+    const item = this.data[index];
+    this.shiftItems(index);
+    return item;
+  }
+
+  shiftItems(index) {
+    // O(n)
+    for (let i = index; i < this.length - 1; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    delete this.data[this.length - 1];
+    this.length--;
+  }
+}
+
+const newArray = new MyArray();
+// newArray.push("a");
+// newArray.push("b");
+// newArray.push("c");
+// newArray.delete(1);
+// // newArray.pop();
+// console.log(newArray);
+
+///// ====== /////
+// REVERSE A STRING //
+
+const string = "";
+
+const reverse = (str) => {
+  // check input
+  if (!str || str.length < 2 || typeof str !== "string") {
+    return " That's not good";
+  }
+  const arrStr = str.split("");
+  const arr = [];
+  for (let i = 1; i <= arrStr.length; i++) {
+    let lastLetter = arrStr[arrStr.length - i];
+    arr.push(lastLetter);
+  }
+  return arr.join("");
+};
+
+console.log(reverse("Hello I am cool"));
