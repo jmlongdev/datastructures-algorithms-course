@@ -351,4 +351,106 @@ const reverse = (str) => {
   return arr.join("");
 };
 
-console.log(reverse("Hello I am cool"));
+const reverse2 = (str) => str.split("").reverse().join("");
+const reverse3 = (str) => [...str].reverse.join("");
+
+// console.log(reverse2("Hello I am cool"));
+
+////// Merge Sorted Arrays ////
+
+const mergeSortedArrays1 = (arr1, arr2) => {
+  const mergedArray = [];
+  let arr1Item = arr1[0];
+  let arr2Item = arr2[0];
+  let i = 1;
+  let j = 1;
+
+  if (arr1.length === 0) {
+    return arr2;
+  }
+  if (arr2.length === 0) {
+    return arr1;
+  }
+
+  while (arr1Item || arr2Item) {
+    if (!arr2Item || arr1Item < arr2Item) {
+      mergedArray.push(arr1Item);
+      arr1Item = arr1[i];
+      i++;
+    } else {
+      mergedArray.push(arr2Item);
+      arr2Item = arr2[j];
+      j++;
+    }
+  }
+  return mergedArray;
+};
+// console.log(mergeSortedArrays1([0, 3, 4, 31], [4, 6, 30]));
+
+const mergeSortedArrays2 = (arr1, arr2) => {
+  if (arr1 < 1 || arr2 < 1) return;
+  const newArr = [...arr1, ...arr2].sort((a, b) => a - b);
+
+  console.log(newArr);
+};
+
+// mergeSortedArrays2([0, 3, 4, 31], [4, 6, 30]);
+
+// Maximum Subarray //
+
+const maxSubArray = (arr) => {
+  let maxSub = arr[0];
+
+  let currentSum = 0;
+  if (arr.length === 0) {
+    return;
+  }
+  for (const n in arr) {
+    if (currentSum < 0) {
+      currentSum = 0;
+    }
+    currentSum += arr[n];
+    maxSub = Math.max(maxSub, currentSum);
+  }
+  if (maxSub < 0) {
+    return 0;
+  } else {
+    return maxSub;
+  }
+};
+
+// console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
+// Two Sum
+
+// take arrays of integers and return the indexes of
+// the numbers that equal the target
+
+// output should return an array if indicies
+
+const twoSums = (arr, target) => {
+  if (arr.length === 0) {
+    return "cannot return an empty array";
+  }
+
+  const outputArr = [];
+  let n = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    n = arr[i];
+    if (n < target) {
+      const diff = target - n;
+      if (arr.includes(diff)) {
+        outputArr.push(i);
+      }
+    }
+  }
+  console.log(outputArr);
+  // return outputArr;
+};
+
+twoSums([11, 7, 15, 2], 9);
+twoSums([2, 7, 15, 11], 9);
+twoSums([3, 2, 4], 6);
+///// ============= SECTION 7 ======== /////
+///// ===== Data Structures: Hash Tables (Objects) ==== //////
